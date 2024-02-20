@@ -1,0 +1,151 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+		MinWidth="600" MinHeight="450"
+		MaxWidth="900" MaxHeight="600"
+		Icon="../icon.png"
+        x:Class="clients.EditAddClient"
+		x:CompileBindings="False">
+	<Grid
+		ShowGridLines="False"
+		ColumnDefinitions="30*, 40*, 30*"
+		RowDefinitions="15*,7*,7*,7*,7*,7*,7*,7*,7*,7* 15*"
+		>
+		<TextBlock Name="action"
+				   Grid.ColumnSpan="3" 
+				   Grid.Row="0" 
+				   HorizontalAlignment="Center"
+				   VerticalAlignment="Center"
+				   FontSize="24"/>
+		
+		<TextBlock Name="BlockId" 
+				   Grid.Column ="0" 
+				   Grid.Row ="1" 
+				   Text="ID: "
+				   HorizontalAlignment="Right"
+				   VerticalAlignment="Center"/>
+		<TextBox Name="BoxId"
+				 Grid.Column="1"
+				 Grid.Row ="1" 
+				 Text="{Binding Id}"
+				 Height="35"/>
+
+		<TextBlock Name="BlockLastName"
+				   Grid.Column ="0"
+				   Grid.Row ="2" 
+				   Text="Фамилия: " 
+				   HorizontalAlignment="Right"
+				   VerticalAlignment="Center"/>
+		<TextBox Name="BoxLastName" 
+				 Grid.Column="1"
+				 Grid.Row ="2" 
+				 Text="{Binding Lastname}"
+				 Height="35"
+				 MaxLength="50"/>
+
+		<TextBlock Name="BlockName"
+				   Grid.Column ="0" 
+				   Grid.Row ="3" 
+				   Text="Имя: " 
+				   HorizontalAlignment="Right"
+				   VerticalAlignment="Center"/>
+		<TextBox Name="BoxName" 
+				 Grid.Column="1"
+				 Grid.Row ="3"
+				 Text="{Binding Firstname}"
+				 Height="35" 
+				 MaxLength="50"/>
+
+		<TextBlock Name="BlockPatr" 
+				   Grid.Column ="0" 
+				   Grid.Row ="4"
+				   Text="Отчество: "
+				   HorizontalAlignment="Right" 
+				   VerticalAlignment="Center"/>
+		<TextBox Name="BoxPatr"
+				 Grid.Column="1" 
+				 Grid.Row ="4"  
+				 Text="{Binding Patronymic}" 
+				 Height="35" 
+				 MaxLength="50"/>
+
+		<TextBlock Name="BlockEmail" 
+				   Grid.Column ="0" 
+				   Grid.Row ="5" 
+				   Text="Email: " 
+				   HorizontalAlignment="Right" 
+				   VerticalAlignment="Center"/>
+		<TextBox Name="BoxIEmail" 
+				 Grid.Column="1"
+				 Grid.Row ="5"  
+				 Text="{Binding Email}" 
+				 Height="35"/>
+
+		<TextBlock Name="BlockPhone"
+				   Grid.Column ="0" 
+				   Grid.Row ="6"
+				   Text="Телефон: " 
+				   HorizontalAlignment="Right" 
+				   VerticalAlignment="Center"/>
+		<TextBox Name="BoxPhone" 
+				 Grid.Column="1" 
+				 Grid.Row ="6"  
+				 Text="{Binding Phone}"
+				 Height="35"/>
+
+		<TextBlock Name="BlockBirthDay"
+				   Grid.Column ="0" 
+				   Grid.Row ="7" 
+				   Text="Дата рождения: "
+				   HorizontalAlignment="Right" 
+				   VerticalAlignment="Center"/>
+		<DatePicker Name="BoxBirthDay"
+					Grid.Column="1" 
+					Grid.Row ="7"  
+					SelectedDate="{Binding BirthdayString}"
+					Height="30" 
+					VerticalAlignment="Center" />
+
+		<TextBlock Name="BlockGender"
+				   Grid.Column ="0" 
+				   Grid.Row ="8" 
+				   Text="Пол: "
+				   HorizontalAlignment="Right"
+				   VerticalAlignment="Center"/>
+		<ComboBox Name="BoxGender"
+				  Grid.Column="1" 
+				  Grid.Row ="8" 
+				  Height="35"
+				  VerticalAlignment="Center">
+			<ComboBoxItem Content="Ж"/>
+			<ComboBoxItem Content="М"/>
+		</ComboBox>
+
+		<TextBlock Name="BlockImg"
+				   Grid.Column ="0" 
+				   Grid.Row ="9"
+				   Text="Фотография: "
+				   HorizontalAlignment="Right"
+				   VerticalAlignment="Center"/>
+		<TextBox Name="BoxImg"
+				 Grid.Column="1"
+				 Grid.Row ="9"  
+				 Text="{Binding Photopath}" 
+				 Height="35"/>
+		<Button Name="LoadPic" Grid.Column="3" Grid.Row="9" Content="Загрузить" 
+				HorizontalAlignment="Left" 
+				VerticalContentAlignment="Center"
+				VerticalAlignment="Center" Margin="10 0 0 0" Height="35"/>
+		
+		<StackPanel Spacing="10" Grid.ColumnSpan="3" Grid.Row="10" VerticalAlignment="Center">
+			<TextBlock Name="Err" HorizontalAlignment="Center" Foreground="Red"/>
+			<Button Name="SaveEditB" Content="Сохранить" 
+					Height="35"
+					VerticalContentAlignment="Center"
+					HorizontalAlignment="Center" />
+		</StackPanel>
+
+	</Grid>
+</Window>

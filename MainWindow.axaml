@@ -1,0 +1,120 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="550"
+		MinWidth="900" MinHeight="550"
+		MaxWidth="1600" MaxHeight="900"
+		Icon="../icon.png"
+        x:Class="clients.MainWindow"
+		x:CompileBindings="False"
+        Title="Список клиентов">
+        <Grid RowDefinitions = "5*, 90*, 5*"
+			  ColumnDefinitions ="50*, 25*, 25*"
+			  >
+			<TextBox Name="Tbox" 
+					 Grid.Row ="0" 
+					 Grid.Column="0" 
+					 Margin="0 5 5 5" 
+					 Height="30" 
+					 HorizontalAlignment="Stretch" 
+					 VerticalAlignment="Center"/>
+			<ComboBox Name="Cbox1" 
+					  Grid.Row ="0" 
+					  Grid.Column="1"
+					  Margin="0 5 0 5" 
+					  Height="30" 
+					  HorizontalAlignment="Stretch"
+					  VerticalAlignment="Center"/>
+			<ComboBox Name="Cbox2" 
+					  Grid.Row ="0"
+					  Grid.Column="2"
+					  Margin="5 5 0 5"
+					  Height="30" 
+					  HorizontalAlignment="Stretch" 
+					  VerticalAlignment="Center"/>
+			<ListBox Name="Lbox" 
+					 Grid.Row="1" 
+					 Grid.ColumnSpan="3">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<Border BorderThickness="1"
+								BorderBrush="Black">
+							<DockPanel Background="{Binding Color}">
+								<Image 
+									Source="{Binding Logo}" 
+									Width="200" 
+									Height="200" 
+									DockPanel.Dock="Left"
+									Margin="10"
+								/>
+								<StackPanel VerticalAlignment="Center" 
+											Spacing="10">
+									<TextBlock Text="{Binding Id, StringFormat=Идентификатор: {0}}"/>
+									<StackPanel Orientation="Horizontal" Spacing="5">
+										<TextBlock Text="{Binding Lastname}"/>
+										<TextBlock Text="{Binding Firstname}"/>
+										<TextBlock Text="{Binding Patronymic}"/>
+									</StackPanel>
+									<TextBlock Text="{Binding Birthday}"/>
+									<TextBlock Text="{Binding Gender, StringFormat=Пол: {0}}"/>
+									<TextBlock Text="{Binding Email}"/>
+									<TextBlock Text="{Binding Phone}"/>
+									<StackPanel Orientation="Horizontal" 
+												Spacing="10">
+										<Button
+											Name="EditButton"
+											Content="Редактировать"
+											Click="EditClick_Event"
+											VerticalContentAlignment="Center"
+											Height="35"
+											Tag="{Binding Id}"
+										/>
+										<Button
+											Name="DelButton"
+											VerticalContentAlignment="Center"
+											Height="35"
+											Content="Удалить"
+											Click="DelClick_Event"
+											Tag="{Binding Id}"
+										/>
+									</StackPanel>
+								</StackPanel>
+								<StackPanel HorizontalAlignment="Right" 
+											Spacing="20" 
+											Margin="0 0 10 0" 
+											VerticalAlignment="Center">
+									<TextBlock 
+										Text="{Binding LastSeenDate, StringFormat=Последняя дата посещения: {0}}"/>
+									<TextBlock 
+										Text="{Binding LastSeenCount, StringFormat=Количество посещений: {0}}"/>
+									<Button
+										Name="LastSeenButton"
+										VerticalContentAlignment="Center"
+										Height="35"
+										Content="Посещения"
+										Click="LastSeenButton_Event"
+										Tag="{Binding Id}"/>
+								</StackPanel>
+							</DockPanel>
+						</Border>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+			<TextBlock Grid.Row="2" 
+					   Grid.Column="3" 
+					   VerticalAlignment="Center" 
+					   Name="Count" 
+					   HorizontalAlignment="Right" 
+					   Margin="0 0 10 0"/>
+			<Button Grid.Row="2" 
+					Grid.Column="0" 
+					VerticalAlignment="Center" 
+					Name="AddClient" 
+					HorizontalAlignment="Left" 
+					Margin="10 0 0 0" 
+					Height="35"
+					Content="Добавить" 
+					VerticalContentAlignment="Center"/>
+		</Grid>
+</Window>

@@ -1,0 +1,24 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="450"
+		MinWidth="300" MinHeight="450"
+		MaxWidth="300" MaxHeight="450"
+		Icon="../icon.png"
+		x:CompileBindings="False"
+        x:Class="clients.LastSeenWin"
+        Title="Последние посещения">
+	<Grid>
+		<ListBox Name="LboxTime">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<DockPanel LastChildFill="False">
+						<TextBlock Text="{Binding Date, StringFormat=Дата: {0}}" DockPanel.Dock="Left"/>
+						<TextBlock Text="{Binding Time, StringFormat=Время: {0}}" DockPanel.Dock="Right"/>
+					</DockPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+	</ListBox>
+	</Grid>
+</Window>
